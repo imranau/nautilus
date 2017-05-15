@@ -1,1 +1,0 @@
-#define NAUT_CONFIG_NO_RT 1

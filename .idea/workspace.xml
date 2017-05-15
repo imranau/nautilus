@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="238fa505-4833-4b02-a6ee-9a7afb6a567c" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/acpi/acexcep.h" afterPath="$PROJECT_DIR$/include/acpi/acexcep.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/acpi/acnames.h" afterPath="$PROJECT_DIR$/include/acpi/acnames.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/acpi/acoutput.h" afterPath="$PROJECT_DIR$/include/acpi/acoutput.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/acpi/acpi.h" afterPath="$PROJECT_DIR$/include/acpi/acpi.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/acpi/acpiosxf.h" afterPath="$PROJECT_DIR$/include/acpi/acpiosxf.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/acpi/acpixf.h" afterPath="$PROJECT_DIR$/include/acpi/acpixf.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/acpi/acrestyp.h" afterPath="$PROJECT_DIR$/include/acpi/acrestyp.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/acpi/actbl.h" afterPath="$PROJECT_DIR$/include/acpi/actbl.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/acpi/actbl1.h" afterPath="$PROJECT_DIR$/include/acpi/actbl1.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/acpi/actbl2.h" afterPath="$PROJECT_DIR$/include/acpi/actbl2.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/acpi/actypes.h" afterPath="$PROJECT_DIR$/include/acpi/actypes.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/acpi/platform/acenv.h" afterPath="$PROJECT_DIR$/include/acpi/platform/acenv.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/acpi/platform/acgcc.h" afterPath="$PROJECT_DIR$/include/acpi/platform/acgcc.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/acpi/platform/acnautilus.h" afterPath="$PROJECT_DIR$/include/acpi/platform/acnautilus.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/arch/hrt/hrt.h" afterPath="$PROJECT_DIR$/include/arch/hrt/hrt.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/arch/hrt/init.h" afterPath="$PROJECT_DIR$/include/arch/hrt/init.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/arch/hrt/main.h" afterPath="$PROJECT_DIR$/include/arch/hrt/main.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/arch/k1om/init.h" afterPath="$PROJECT_DIR$/include/arch/k1om/init.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/arch/k1om/k1omsfi.h" afterPath="$PROJECT_DIR$/include/arch/k1om/k1omsfi.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/arch/k1om/main.h" afterPath="$PROJECT_DIR$/include/arch/k1om/main.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/arch/k1om/xeon_phi.h" afterPath="$PROJECT_DIR$/include/arch/k1om/xeon_phi.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/arch/x64/init.h" afterPath="$PROJECT_DIR$/include/arch/x64/init.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/arch/x64/main.h" afterPath="$PROJECT_DIR$/include/arch/x64/main.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/asm/bitops.h" afterPath="$PROJECT_DIR$/include/asm/bitops.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/asm/lowlevel.h" afterPath="$PROJECT_DIR$/include/asm/lowlevel.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/dev/apic.h" afterPath="$PROJECT_DIR$/include/dev/apic.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/dev/ata.h" afterPath="$PROJECT_DIR$/include/dev/ata.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/dev/hpet.h" afterPath="$PROJECT_DIR$/include/dev/hpet.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/dev/i8254.h" afterPath="$PROJECT_DIR$/include/dev/i8254.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/dev/ioapic.h" afterPath="$PROJECT_DIR$/include/dev/ioapic.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/dev/pci.h" afterPath="$PROJECT_DIR$/include/dev/pci.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/dev/ramdisk.h" afterPath="$PROJECT_DIR$/include/dev/ramdisk.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/dev/serial.h" afterPath="$PROJECT_DIR$/include/dev/serial.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/dev/vesa.h" afterPath="$PROJECT_DIR$/include/dev/vesa.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/dev/vga.h" afterPath="$PROJECT_DIR$/include/dev/vga.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/dev/virtio_pci.h" afterPath="$PROJECT_DIR$/include/dev/virtio_pci.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/fs/ext2/ext2.h" afterPath="$PROJECT_DIR$/include/fs/ext2/ext2.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/lib/bitmap.h" afterPath="$PROJECT_DIR$/include/lib/bitmap.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/lib/bitops.h" afterPath="$PROJECT_DIR$/include/lib/bitops.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/lib/linux_bitops.h" afterPath="$PROJECT_DIR$/include/lib/linux_bitops.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/nautilus/acpi-x86_64.h" afterPath="$PROJECT_DIR$/include/nautilus/acpi-x86_64.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/nautilus/acpi.h" afterPath="$PROJECT_DIR$/include/nautilus/acpi.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/nautilus/atomic.h" afterPath="$PROJECT_DIR$/include/nautilus/atomic.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/nautilus/backtrace.h" afterPath="$PROJECT_DIR$/include/nautilus/backtrace.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/nautilus/barrier.h" afterPath="$PROJECT_DIR$/include/nautilus/barrier.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/nautilus/bits.h" afterPath="$PROJECT_DIR$/include/nautilus/bits.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/nautilus/blkdev.h" afterPath="$PROJECT_DIR$/include/nautilus/blkdev.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/nautilus/buddy.h" afterPath="$PROJECT_DIR$/include/nautilus/buddy.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/nautilus/bug.h" afterPath="$PROJECT_DIR$/include/nautilus/bug.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/nautilus/chardev.h" afterPath="$PROJECT_DIR$/include/nautilus/chardev.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/nautilus/condvar.h" afterPath="$PROJECT_DIR$/include/nautilus/condvar.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/nautilus/cpu.h" afterPath="$PROJECT_DIR$/include/nautilus/cpu.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/nautilus/cpuid.h" afterPath="$PROJECT_DIR$/include/nautilus/cpuid.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/nautilus/cxxglue.h" afterPath="$PROJECT_DIR$/include/nautilus/cxxglue.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/nautilus/dev.h" afterPath="$PROJECT_DIR$/include/nautilus/dev.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/nautilus/doprnt.h" afterPath="$PROJECT_DIR$/include/nautilus/doprnt.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/nautilus/errno.h" afterPath="$PROJECT_DIR$/include/nautilus/errno.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/nautilus/fmtout.h" afterPath="$PROJECT_DIR$/include/nautilus/fmtout.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/nautilus/fprintk.h" afterPath="$PROJECT_DIR$/include/nautilus/fprintk.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/nautilus/fpu.h" afterPath="$PROJECT_DIR$/include/nautilus/fpu.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/nautilus/fs.h" afterPath="$PROJECT_DIR$/include/nautilus/fs.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/nautilus/gdt.h" afterPath="$PROJECT_DIR$/include/nautilus/gdt.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/nautilus/hashtable.h" afterPath="$PROJECT_DIR$/include/nautilus/hashtable.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/nautilus/idle.h" afterPath="$PROJECT_DIR$/include/nautilus/idle.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/nautilus/idt.h" afterPath="$PROJECT_DIR$/include/nautilus/idt.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/nautilus/instrument.h" afterPath="$PROJECT_DIR$/include/nautilus/instrument.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/nautilus/intrinsics.h" afterPath="$PROJECT_DIR$/include/nautilus/intrinsics.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/nautilus/irq.h" afterPath="$PROJECT_DIR$/include/nautilus/irq.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/nautilus/libccompat.h" afterPath="$PROJECT_DIR$/include/nautilus/libccompat.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/nautilus/limits.h" afterPath="$PROJECT_DIR$/include/nautilus/limits.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/nautilus/list.h" afterPath="$PROJECT_DIR$/include/nautilus/list.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/nautilus/macros.h" afterPath="$PROJECT_DIR$/include/nautilus/macros.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/nautilus/math.h" afterPath="$PROJECT_DIR$/include/nautilus/math.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/nautilus/mb_utils.h" afterPath="$PROJECT_DIR$/include/nautilus/mb_utils.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/nautilus/mcslock.h" afterPath="$PROJECT_DIR$/include/nautilus/mcslock.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/nautilus/mm.h" afterPath="$PROJECT_DIR$/include/nautilus/mm.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/nautilus/msr.h" afterPath="$PROJECT_DIR$/include/nautilus/msr.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/nautilus/multiboot2.h" afterPath="$PROJECT_DIR$/include/nautilus/multiboot2.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/nautilus/mwait.h" afterPath="$PROJECT_DIR$/include/nautilus/mwait.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/nautilus/naut_assert.h" afterPath="$PROJECT_DIR$/include/nautilus/naut_assert.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/nautilus/naut_string.h" afterPath="$PROJECT_DIR$/include/nautilus/naut_string.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/nautilus/naut_types.h" afterPath="$PROJECT_DIR$/include/nautilus/naut_types.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/nautilus/nautilus.h" afterPath="$PROJECT_DIR$/include/nautilus/nautilus.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/nautilus/nemo.h" afterPath="$PROJECT_DIR$/include/nautilus/nemo.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/nautilus/netdev.h" afterPath="$PROJECT_DIR$/include/nautilus/netdev.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/nautilus/numa.h" afterPath="$PROJECT_DIR$/include/nautilus/numa.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/nautilus/paging.h" afterPath="$PROJECT_DIR$/include/nautilus/paging.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/nautilus/percpu.h" afterPath="$PROJECT_DIR$/include/nautilus/percpu.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/nautilus/pmc.h" afterPath="$PROJECT_DIR$/include/nautilus/pmc.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/nautilus/printk.h" afterPath="$PROJECT_DIR$/include/nautilus/printk.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/nautilus/queue.h" afterPath="$PROJECT_DIR$/include/nautilus/queue.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/nautilus/random.h" afterPath="$PROJECT_DIR$/include/nautilus/random.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/nautilus/rbtree.h" afterPath="$PROJECT_DIR$/include/nautilus/rbtree.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/nautilus/realmode.h" afterPath="$PROJECT_DIR$/include/nautilus/realmode.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/nautilus/rwlock.h" afterPath="$PROJECT_DIR$/include/nautilus/rwlock.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/nautilus/scheduler.h" afterPath="$PROJECT_DIR$/include/nautilus/scheduler.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/nautilus/setjmp.h" afterPath="$PROJECT_DIR$/include/nautilus/setjmp.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/nautilus/sfi.h" afterPath="$PROJECT_DIR$/include/nautilus/sfi.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/nautilus/shell.h" afterPath="$PROJECT_DIR$/include/nautilus/shell.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/nautilus/shutdown.h" afterPath="$PROJECT_DIR$/include/nautilus/shutdown.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/nautilus/smp.h" afterPath="$PROJECT_DIR$/include/nautilus/smp.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/nautilus/spinlock.h" afterPath="$PROJECT_DIR$/include/nautilus/spinlock.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/nautilus/testfs.h" afterPath="$PROJECT_DIR$/include/nautilus/testfs.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/nautilus/thread.h" afterPath="$PROJECT_DIR$/include/nautilus/thread.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/nautilus/ticketlock.h" afterPath="$PROJECT_DIR$/include/nautilus/ticketlock.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/nautilus/timer.h" afterPath="$PROJECT_DIR$/include/nautilus/timer.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/nautilus/vc.h" afterPath="$PROJECT_DIR$/include/nautilus/vc.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/nautilus/vmm.h" afterPath="$PROJECT_DIR$/include/nautilus/vmm.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/test/ipi.h" afterPath="$PROJECT_DIR$/include/test/ipi.h" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-11" />
+    <option name="y" value="-11" />
+    <option name="width" value="1942" />
+    <option name="height" value="1046" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="my_nautilus" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="my_nautilus" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="238fa505-4833-4b02-a6ee-9a7afb6a567c" name="Default" comment="" />
+      <created>1494862477843</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1494862477843</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-11" y="-11" width="1942" height="1046" extended-state="6" />
+    <editor active="false" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+</project>

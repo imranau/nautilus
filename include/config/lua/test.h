@@ -1,1 +1,0 @@
-#define NAUT_CONFIG_LUA_TEST 1
