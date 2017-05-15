@@ -96,6 +96,11 @@ typedef long int clock_t;
 typedef int nl_item;
 typedef unsigned long int nfds_t;
 typedef __SIZE_TYPE__ size_t;
+struct timespec {
+    time_t tv_sec;
+    long tv_nsec;
+};
+
 struct pollfd {
     int fd;
     short events;
@@ -105,29 +110,8 @@ struct pollfd {
 //lua
 typedef void* locale_t;
 
-
-#ifndef _STRUCT_TIMESPEC
-#define _STRUCT_TIMESPEC
-struct timespec {
-	time_t  tv_sec;         /* seconds */
-	long    tv_nsec;        /* nanoseconds */
- };
- #endif /* _STRUCT_TIMESPEC */
-
-#define SEEK_END  0
-
-#define SEEK_CUR  1
-#define SEEK_SET  2
-#define _IOFBF  0               /* setvbuf should set fully buffered */
-#define _IOLBF  1               /* setvbuf should set line buffered */
-#define _IONBF  2               /* setvbuf should set unbuffered */
-#define L_tmpnam	1024
-#define CLOCKS_PER_SEC	1000000l /* found from time.h*/
-
- extern int errno;
-
-
-
+time_t time(time_t * timer);
+extern int errno;
 
 void abort(void);
 int __popcountdi2(long long a);
@@ -143,19 +127,15 @@ double drand48(void);
 char * strerror(int);
 
 int fclose(FILE*);
-#ifndef LIB_LUA
-FILE * fopen(const char*, FILE*); // Default signature is fopen(cont*,cont*)
-#else
-FILE *fopen(const char *restrict filename, const char *restrict mode);
-#endif
+FILE * fopen(const char*, FILE*);
 FILE *tmpfile(void);
 FILE * fopen64(const char*, FILE*);
 FILE *fdopen(int fd, const char *mode);
-int fflush(FILE *p);
+int fflush(FILE*);
 int fprintf(FILE*, const char*, ...);
 int fputc(int, FILE*);
 int fputs(const char*, FILE*);
-size_t fwrite(const void *, size_t, size_t, FILE *);
+size_t fwrite(const void*, size_t, size_t, FILE*);
 size_t fread(void * ptr, size_t size, size_t count, FILE * stream);
 int getwc(FILE * stream);
 size_t __ctype_get_mb_cur_max(void);

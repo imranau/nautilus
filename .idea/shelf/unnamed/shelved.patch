@@ -1,0 +1,626 @@
+Index: include/nautilus/naut_string.h
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- include/nautilus/naut_string.h	(revision 290c7daef5c379c877cb3dc02f7cc1d6ad8d14b6)
++++ include/nautilus/naut_string.h	(revision )
+@@ -91,8 +91,6 @@
+ int strncasecmp (const char * s1, const char * s2, size_t limit);
+ char * strdup (const char * s);
+ char * strpbrk (const char * cs, const char * ct);
+-char * strptok (const char * cs, const char * ct);
+-char * strsep (char ** s, const char * ct);
+ char * strsep (char ** s, const char * ct);
+ char * strcat (char * s1, const char * s2);
+ char * strncat (char * s1, const char * s2, size_t limit);
+Index: include/nautilus/vc.h
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- include/nautilus/vc.h	(revision 290c7daef5c379c877cb3dc02f7cc1d6ad8d14b6)
++++ include/nautilus/vc.h	(revision )
+@@ -28,7 +28,7 @@
+ #define __NK_VC
+ 
+ 
+-#include <dev/kbd.h>
++#include <dev/ps2.h>
+ 
+ struct nk_thread;
+ 
+@@ -86,10 +86,14 @@
+ int nk_vc_getchar();
+ int nk_vc_gets(char *buf, int n, int display);
+ 
+-int nk_vc_handle_input(nk_scancode_t scan);
++int nk_vc_handle_keyboard(nk_scancode_t scan);
++int nk_vc_handle_mouse(nk_mouse_event_t *mouse);
+ 
+ int nk_vc_init(void);
+ int nk_vc_is_active(void);
++
++int nk_vc_start_chardev_console(char *chardev);
++
+ int nk_vc_deinit(void);
+ 
+ 
+Index: include/dev/vga.h
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- include/dev/vga.h	(revision 290c7daef5c379c877cb3dc02f7cc1d6ad8d14b6)
++++ include/dev/vga.h	(revision )
+@@ -57,6 +57,7 @@
+ void     vga_set_cursor(uint8_t x, uint8_t y);
+ void     vga_get_cursor(uint8_t *x, uint8_t *y);
+ 
++void     vga_early_init();
+ void     vga_init();
+ 
+ void     vga_init_screen();
+Index: include/nautilus/blkdev.h
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- include/nautilus/blkdev.h	(revision 290c7daef5c379c877cb3dc02f7cc1d6ad8d14b6)
++++ include/nautilus/blkdev.h	(revision )
+@@ -8,7 +8,7 @@
+  * led by Sandia National Laboratories that includes several national 
+  * laboratories and universities. You can find out more at:
+  * http://www.v3vee.org  and
+- * http://xtack.sandia.gov/hobbes
++ * http://xstack.sandia.gov/hobbes
+  *
+  * Copyright (c) 2016, Peter Dinda <pdinda@northwestern.edu>
+  * Copyright (c) 2015, The V3VEE Project  <http://www.v3vee.org> 
+@@ -37,12 +37,11 @@
+     struct nk_dev_int dev_int;
+     
+     // blockdev-specific interface - set to zero if not available
+-    // an interface either succeeds (returns zero) or fails (returns -1)
++    // an interface either succeeds (returns zero) or fails (returns -1) 
++    // in any case, it returns immediately
+     int (*get_characteristics)(void *state, struct nk_block_dev_characteristics *c);
+-    int (*read_blocks_sync)(void *state, uint64_t blocknum, uint64_t count, uint8_t *dest);
+-    int (*write_blocks_sync)(void *state, uint64_t blocknum, uint64_t count, uint8_t *src);
+-    int (*read_blocks_async)(void *state, uint64_t blocknum, uint64_t count, uint8_t *dest);
+-    int (*write_blocks_async)(void *state, uint64_t blocknum, uint64_t count, uint8_t *src);
++    int (*read_blocks)(void *state, uint64_t blocknum, uint64_t count, uint8_t *dest, void (*callback)(void *), void *context);
++    int (*write_blocks)(void *state, uint64_t blocknum, uint64_t count, uint8_t *src, void (*callback)(void *), void *context);
+ };
+ 
+ 
+@@ -66,13 +65,17 @@
+ 		      uint64_t blocknum, 
+ 		      uint64_t count, 
+ 		      void   *dest, 
+-		      nk_dev_request_type_t type);
++		      nk_dev_request_type_t type,
++		      void (*callback)(void *), 
++		      void *state);
+ 
+ int nk_block_dev_write(struct nk_block_dev *dev, 
+ 		       uint64_t blocknum, 
+ 		       uint64_t count, 
+ 		       void   *src,  
+-		       nk_dev_request_type_t type);
++		       nk_dev_request_type_t type,
++		       void (*callback)(void *), 
++		       void *state);
+ 
+ 
+ 
+Index: include/nautilus/libccompat.h
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- include/nautilus/libccompat.h	(revision 290c7daef5c379c877cb3dc02f7cc1d6ad8d14b6)
++++ include/nautilus/libccompat.h	(revision )
+@@ -28,14 +28,13 @@
+ #endif
+ 
+ #include <nautilus/nautilus.h>
+-#include <nautilus/naut_types.h>
++
+ #ifndef NAUT_CONFIG_SILENCE_UNDEF_ERR
+ #define UNDEF_FUN_ERR() ERROR_PRINT("Function (%s) undefined\n", __func__)
+ #else
+ #define UNDEF_FUN_ERR() 
+ #endif
+ 
+-//#define SHRT_MAX 0x7FFF
+ #define RAND_MAX    2147483647
+ 
+ typedef int clockid_t;
+@@ -51,84 +50,28 @@
+ #define CLOCK_BOOTTIME_ALARM            9
+ #define CLOCK_SGI_CYCLE                 10      /* Hardware specific */
+ #define CLOCK_TAI                       11
+-
+-//lua
+-#define EOF 				0
+-#define EXIT_FAILURE			0
+-#define EXIT_SUCCESS			1
+-
+-#define LC_ALL				0 
+-#define LC_COLLATE			0
+-#define LC_CTYPE			0
+-#define LC_MONETARY			0
+-#define LC_NUMERIC			0
+-#define LC_TIME				0
+-#define UCHAR_MAX			255
+-#define SIGINT				0
+-#define SIG_DFL				0
+-
+-#define stdin				0
+-#define stdout				1
+-#define stderr				2
+-
+-// /* Standard streams.  */
+-// extern struct _IO_FILE *stdin;		/* Standard input stream.  */
+-// extern struct _IO_FILE *stdout;		/* Standard output stream.  */
+-// extern struct _IO_FILE *stderr;		/* Standard error output stream.  */
+-// #ifdef __STDC__
+-// /* C89/C99 say they're macros.  Make them happy.  */
+-// #define stdin stdin
+-// #define stdout stdout
+-// #define stderr stderr
+-// #endif
+-
+-
+-
+-#define _JBLEN ((9 * 2) + 3 + 16)
+-//typedef int jmp_buf[_JBLEN];
+-//int clock(); - better definition found later
+-
+-// 
++ 
+ typedef long time_t;
+ typedef void FILE;
+ typedef uint64_t off_t;
+-typedef long int clock_t;
++
+ typedef int nl_item;
+ typedef unsigned long int nfds_t;
+-typedef __SIZE_TYPE__ size_t;
++
++struct timespec {
++    time_t tv_sec;
++    long tv_nsec;
++};
++
+ struct pollfd {
+     int fd;
+     short events;
+     short revents;
+ };
+ 
+-//lua
+ typedef void* locale_t;
+ 
+-
+-#ifndef _STRUCT_TIMESPEC
+-#define _STRUCT_TIMESPEC
+-struct timespec {
+-	time_t  tv_sec;         /* seconds */
+-	long    tv_nsec;        /* nanoseconds */
+- };
+- #endif /* _STRUCT_TIMESPEC */
+-
+-#define SEEK_END  0
+-
+-#define SEEK_CUR  1
+-#define SEEK_SET  2
+-#define _IOFBF  0               /* setvbuf should set fully buffered */
+-#define _IOLBF  1               /* setvbuf should set line buffered */
+-#define _IONBF  2               /* setvbuf should set unbuffered */
+-#define L_tmpnam	1024
+-#define CLOCKS_PER_SEC	1000000l /* found from time.h*/
+-
+- extern int errno;
+-
+-
+-
+-
++time_t time(time_t * timer);
+ void abort(void);
+ int __popcountdi2(long long a);
+ void exit(int status);
+@@ -143,19 +86,14 @@
+ char * strerror(int);
+ 
+ int fclose(FILE*);
+-#ifndef LIB_LUA
+-FILE * fopen(const char*, FILE*); // Default signature is fopen(cont*,cont*)
+-#else
+-FILE *fopen(const char *restrict filename, const char *restrict mode);
+-#endif
+-FILE *tmpfile(void);
++FILE * fopen(const char*, FILE*);
+ FILE * fopen64(const char*, FILE*);
+ FILE *fdopen(int fd, const char *mode);
+-int fflush(FILE *p);
++int fflush(FILE*);
+ int fprintf(FILE*, const char*, ...);
+ int fputc(int, FILE*);
+ int fputs(const char*, FILE*);
+-size_t fwrite(const void *, size_t, size_t, FILE *);
++size_t fwrite(const void*, size_t, size_t, FILE*);
+ size_t fread(void * ptr, size_t size, size_t count, FILE * stream);
+ int getwc(FILE * stream);
+ size_t __ctype_get_mb_cur_max(void);
+@@ -175,118 +113,22 @@
+ char * gettext(const char * msgid);
+ 
+ int printf(const char *, ...);
+-//Goutham - Adding locale for lua 
+-void *realloc(void *ptr, size_t size);
+-int feof(FILE*);
+-int getc(FILE*);
+-
+-char *fgets(char *restrict s, int n, FILE *restrict stream); 
+-FILE *freopen(const char *fname, const char *mode,FILE *stream);
+-
+-int ferror(FILE *);
+-long     ftell(FILE *);
+-int fscanf(FILE *restrict stream, const char *restrict format, ... );
+-void clearerr(FILE *stream); 
+-
+-int fseek(FILE *stream, long offset, int whence); 
+-
+-int setvbuf(FILE *restrict stream, char *restrict buf, int type,
+-       size_t size);
+-
+-int system(const char *command);
+-
+-char *getenv(const char *name);
+-
+-int rename(const char *old, const char *new);
+-
+-int remove(const char *path);
+-
+-
+-/*==================*
+-*    				*
+-*  LUA SPECIFICS    *
+-*					*
+-*===================*/					
+-
+-struct tm {
+-   int tm_sec;         /* seconds,  range 0 to 59          */
+-   int tm_min;         /* minutes, range 0 to 59           */
+-   int tm_hour;        /* hours, range 0 to 23             */
+-   int tm_mday;        /* day of the month, range 1 to 31  */
+-   int tm_mon;         /* month, range 0 to 11             */
+-   int tm_year;        /* The number of years since 1900   */
+-   int tm_wday;        /* day of the week, range 0 to 6    */
+-   int tm_yday;        /* day in the year, range 0 to 365  */
+-   int tm_isdst;       /* daylight saving time             */   
+-};
+-
+ 
+ #define GEN_HDR(x) int x (void);
+ 
+-// Structures.
+-
+-struct lconv *localeconv(void);
+-time_t mktime(struct tm *timeptr);
+-struct tm *localtime(const time_t *timer);
+-struct tm *gmtime(const time_t *timer);
+-
+-//Function prototypes
+-int strcoll(const char *str1, const char *str2);
+-size_t strftime(char *str, size_t maxsize, const char *format, const struct tm *timeptr);
+-
+-void (*signal(int sig, void (*func)(int)))(int);
+-
+-double pow(double x, double y);
+-char *tmpnam(char *s);
+-clock_t clock(void);
+-//void longjmp(int *,int __val);
+-//int setjmp(int *);
+-time_t time(time_t * timer);
+-double difftime(time_t time1, time_t time2);
+-void *memchr(const void *str, int c, size_t n);
+-double fabs(double __x);
+-double atan(double __x);
+-double atan2(double y, double x);
+-double fmodnew(int y, int x); //dupe for test
+-double modf(double y, double *x);
+-double fmod(double y, double x);
+-
+-double frexp(double x, int *e);
+-double ldexp(double x, int exp);
+-double strtod(const char *str, char **endptr);
+-double abs(double x);
+-double sin(double x);
+-double sinh(double x);
+-double cos(double x);
+-double cosh(double x);
+-double tan(double x);
+-double tanh(double x);
+-double asin(double x);
+-double acos(double x);
+-double ceil(double x);
+-double floor(double x);
+-double sqrt(double x);
+-double pow(double x, double y);
+-double log(double x);
+-double log10(double x);
+-double exp(double x);
+-
+-//=============END LUA HERE==================//
+-
+-
+ GEN_HDR(writev)
+ GEN_HDR(ungetwc)
+ GEN_HDR(__errno_location)
+ GEN_HDR(write)
+ GEN_HDR(wcrtomb)
+ GEN_HDR(mbrtowc)
+-//GEN_HDR(getc) 
++GEN_HDR(getc)
+ GEN_HDR(__iswctype_l)
+ GEN_HDR(wcslen)
+ GEN_HDR(__strtof_l)
+-//GEN_HDR(stderr)
++GEN_HDR(stderr)
+ GEN_HDR(wmemset)
+-//GEN_HDR(stdin)
++GEN_HDR(stdin)
+ GEN_HDR(fileno)
+ GEN_HDR(__fxstat64)
+ GEN_HDR(putc)
+@@ -307,13 +149,13 @@
+ GEN_HDR(wcscmp)
+ GEN_HDR(wcsnrtombs)
+ GEN_HDR(__strcoll_l)
+-//GEN_HDR(stdout)
++GEN_HDR(stdout)
+ GEN_HDR(btowc)
+-//GEN_HDR(memchr)
++GEN_HDR(memchr)
+ GEN_HDR(strtold_l)
+ GEN_HDR(wmemcmp)
+ GEN_HDR(__strtod_l)
+-//GEN_HDR(setvbuf) - Implmented above 
++GEN_HDR(setvbuf)
+ GEN_HDR(__wctype_l)
+ GEN_HDR(__towupper_l)
+ GEN_HDR(__uselocale)
+Index: include/nautilus/netdev.h
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- include/nautilus/netdev.h	(revision 290c7daef5c379c877cb3dc02f7cc1d6ad8d14b6)
++++ include/nautilus/netdev.h	(revision )
+@@ -8,7 +8,7 @@
+  * led by Sandia National Laboratories that includes several national 
+  * laboratories and universities. You can find out more at:
+  * http://www.v3vee.org  and
+- * http://xtack.sandia.gov/hobbes
++ * http://xstack.sandia.gov/hobbes
+  *
+  * Copyright (c) 2016, Peter Dinda <pdinda@northwestern.edu>
+  * Copyright (c) 2015, The V3VEE Project  <http://www.v3vee.org> 
+@@ -63,14 +63,18 @@
+ int nk_net_dev_get_characteristics(struct nk_net_dev *d, struct nk_net_dev_characteristics *c);
+ 
+ int nk_net_dev_receive_packet(struct nk_net_dev *dev, 
+-		       uint8_t *dest,
+-		       uint64_t len,
+-		       nk_dev_request_type_t type);
++			      uint8_t *dest,
++			      uint64_t len,
++			      nk_dev_request_type_t type, 
++			      void (*callback)(void *state), // for callback reqs
++			      void *state);                 // for callback reqs
+ 
+ int nk_net_dev_send_packet(struct nk_net_dev *dev, 
+ 			   uint8_t *src,
+ 			   uint64_t len,
+-			   nk_dev_request_type_t type);
++			   nk_dev_request_type_t type,
++			   void (*callback)(void *state),  // for callback reqs
++			   void *state);                  // for callback reqs
+ 
+ 
+ #endif
+Index: include/nautilus/limits.h
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- include/nautilus/limits.h	(revision 290c7daef5c379c877cb3dc02f7cc1d6ad8d14b6)
++++ include/nautilus/limits.h	(revision )
+@@ -33,8 +33,7 @@
+ #define SHRT_MIN    ((s16)(-SHRT_MAX - 1))
+ #endif
+ #ifndef INT_MAX
+-//#define INT_MAX     ((int)(~0U>>1))
+-#define INT_MAX 2147483647
++#define INT_MAX     ((int)(~0U>>1))
+ #endif
+ #ifndef INT_MIN
+ #define INT_MIN     (-INT_MAX - 1)
+Index: include/nautilus/dev.h
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- include/nautilus/dev.h	(revision 290c7daef5c379c877cb3dc02f7cc1d6ad8d14b6)
++++ include/nautilus/dev.h	(revision )
+@@ -8,7 +8,7 @@
+  * led by Sandia National Laboratories that includes several national 
+  * laboratories and universities. You can find out more at:
+  * http://www.v3vee.org  and
+- * http://xtack.sandia.gov/hobbes
++ * http://xstack.sandia.gov/hobbes
+  *
+  * Copyright (c) 2016, Peter Dinda <pdinda@northwestern.edu>
+  * Copyright (c) 2015, The V3VEE Project  <http://www.v3vee.org> 
+@@ -26,8 +26,17 @@
+ 
+ #include <nautilus/list.h>
+ 
++
+ #define DEV_NAME_LEN 32
+-typedef enum {NK_DEV_CHAR, NK_DEV_BLK, NK_DEV_NET} nk_dev_type_t ; 
++typedef enum {
++    NK_DEV_GENERIC, 
++    NK_DEV_INTR, 
++    NK_DEV_TIMER,
++    NK_DEV_BUS,
++    NK_DEV_CHAR, 
++    NK_DEV_BLK, 
++    NK_DEV_NET
++} nk_dev_type_t ; 
+ 
+ 
+ // this is the abstract base class for device interfaces
+@@ -37,6 +46,8 @@
+     int (*close)(void *state);
+ };
+ 
++typedef struct nk_queue nk_thread_queue_t;
++
+ // this is the class for devices.  It should be the first
+ // member of any specific type of device
+ struct nk_dev {
+@@ -48,9 +59,14 @@
+     void *state; // driver state
+     
+     struct nk_dev_int *interface;
++    
++    nk_thread_queue_t *waiting_threads;
+ };
+ 
+-typedef enum {NK_DEV_REQ_BLOCKING, NK_DEV_REQ_NONBLOCKING} nk_dev_request_type_t;
++// Not all request types apply to all device types
++// Not all devices support the request types valid
++// for a specific device type
++typedef enum {NK_DEV_REQ_BLOCKING, NK_DEV_REQ_NONBLOCKING, NK_DEV_REQ_CALLBACK} nk_dev_request_type_t;
+ 
+ int nk_dev_init();
+ int nk_dev_deinit();
+@@ -60,6 +76,9 @@
+ 
+ struct nk_dev *nk_dev_find(char *name);
+ 
++void nk_dev_wait(struct nk_dev *);
++void nk_dev_signal(struct nk_dev *);
++
+ void nk_dev_dump_devices();
+ 
+ 
+Index: include/nautilus/printk.h
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- include/nautilus/printk.h	(revision 290c7daef5c379c877cb3dc02f7cc1d6ad8d14b6)
++++ include/nautilus/printk.h	(revision )
+@@ -30,10 +30,8 @@
+ #define	PRINTK_BUFMAX	128
+ #include <stdarg.h>
+ #include <nautilus/naut_types.h>
+-#ifndef LIB_LUA
++
+ void panic (const char * fmt, ...);
+-#endif
+-
+ int printk (const char * fmt, ...);
+ int vprintk(const char * fmt, va_list args);
+ int early_printk (const char * fmt, va_list args);
+Index: include/nautilus/mm.h
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- include/nautilus/mm.h	(revision 290c7daef5c379c877cb3dc02f7cc1d6ad8d14b6)
++++ include/nautilus/mm.h	(revision )
+@@ -87,9 +87,7 @@
+ void kmem_add_memory(struct mem_region * mem, ulong_t base_addr, size_t size);
+ void * malloc(size_t size);
+ void free(void * addr);
+-//Lua
+-void *realloc(void *ptr, size_t size);
+-// 
++
+ 
+ /* arch specific */
+ void arch_detect_mem_map (mmap_info_t * mm_info, mem_map_entry_t * memory_map, unsigned long mbd);
+Index: include/dev/serial.h
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- include/dev/serial.h	(revision 290c7daef5c379c877cb3dc02f7cc1d6ad8d14b6)
++++ include/dev/serial.h	(revision )
+@@ -8,7 +8,7 @@
+  * led by Sandia National Laboratories that includes several national 
+  * laboratories and universities. You can find out more at:
+  * http://www.v3vee.org  and
+- * http://xtack.sandia.gov/hobbes
++ * http://xstack.sandia.gov/hobbes
+  *
+  * Copyright (c) 2015, Kyle C. Hale <kh@u.northwestern.edu>
+  * Copyright (c) 2015, The V3VEE Project  <http://www.v3vee.org> 
+@@ -16,6 +16,7 @@
+  * All rights reserved.
+  *
+  * Author: Kyle C. Hale <kh@u.northwestern.edu>
++ *         Peter A. Dinda <pdinda@northwestern.edu>
+  *
+  * This is free software.  You are permitted to use,
+  * redistribute, and modify it as specified in the file "LICENSE.txt".
+@@ -23,36 +24,24 @@
+ #ifndef __SERIAL_H__
+ #define __SERIAL_H__
+ 
+-#define COM1_3_IRQ 4
+-#define COM2_4_IRQ 3
+-#define COM1_ADDR 0x3F8
+-#define COM2_ADDR 0x2F8
+-#define COM3_ADDR 0x3E8
+-#define COM4_ADDR 0x2E8
+-
+-#ifndef SERIAL_PRINT_DEBUG_LEVEL
+-#define SERIAL_PRINT_DEBUG_LEVEL  10
+-#endif
+-
+ #include <stddef.h>
+ #include <stdarg.h>
+ #include <dev/serial.h>
+ 
++#ifndef SERIAL_PRINT_DEBUG_LEVEL
++#define SERIAL_PRINT_DEBUG_LEVEL  10
++#endif
++
+ void serial_putchar(unsigned char c);
+ void serial_write(const char *buf);
+ void serial_puts(const char *buf);
+-
+ void serial_print(const char * format, ...);
++
+ void serial_printlevel(int level, const char * format, ...);
+-void serial_print_list(const char * format, va_list ap);
+-void __serial_print(const char * format, va_list ap);
+ 
+ 
+-void serial_print_hex(unsigned char x);
+-void serial_mem_dump(unsigned char *start, int n);
++void  serial_early_init(void);
+ 
+-uint8_t serial_get_irq(void);
+-void serial_init(void);
+-void serial_init_addr(unsigned short io_addr);
++void  serial_init(void);
+ 
+ #endif
